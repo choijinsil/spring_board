@@ -6,17 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.encore.domain.BoardVO;
+import com.encore.domain.Criteria;
 import com.encore.persistence.BoardDAO;
 
 @Service
-public class BoardServiceImpl implements BoardService{
+public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	private BoardDAO dao;
-	
+
 	@Override
 	public int register(BoardVO board) {
-		int bno=dao.selectBno();
+		int bno = dao.selectBno();
 		board.setBno(bno);
 		dao.insert(board);
 		return bno;
@@ -29,8 +30,8 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public boolean modify(BoardVO board) {
-		int upCnt=dao.update(board);
-		if(upCnt>0) {
+		int upCnt = dao.update(board);
+		if (upCnt > 0) {
 			return true;
 		}
 		return false;
@@ -38,18 +39,28 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public boolean remove(int bno) {
-		int delCnt=dao.delete(bno);
-		System.out.println("delCnt>>"+delCnt);
-		if(delCnt==1) {
+		int delCnt = dao.delete(bno);
+		System.out.println("delCnt>>" + delCnt);
+		if (delCnt == 1) {
 			return true;
 		}
 		return false;
 	}
 
+//	@Override
+//	public List<BoardVO> getList(int page) {
+//		return dao.selectAll(page);
+//	}
+	
 	@Override
-	public List<BoardVO> getList() {
-		
-		return dao.selectAll();
+	public List<BoardVO> getList(Criteria cri) {
+		return dao.selectAll(cri);
+	}
+
+	@Override
+	public int getTotal(Criteria cri) {
+
+		return dao.getTotalCount(cri);
 	}
 
 }

@@ -18,3 +18,8 @@ add constraint board_pk primary key(bno);
 create sequence tbl_board_seq;
 
 select * from tbl_board;
+
+insert into tbl_board(bno,title,content,writer)
+select tbl_board_seq.nextval, title, content, writer from tbl_board;
+
+
