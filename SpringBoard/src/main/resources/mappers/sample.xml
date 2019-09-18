@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sample">
+   <insert id="insertSample1">
+       insert into tbl_sample1 (username)
+       values (#{username})
+   </insert>
+   
+   <insert id="insertSample2">
+       insert into tbl_sample2 (username)
+       values (#{username})
+   </insert>
+</mapper>
+

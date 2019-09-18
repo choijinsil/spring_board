@@ -13,6 +13,12 @@ create table tbl_board
 );
 
 alter table tbl_board
+add(replycnt number default 0);
+
+update tbl_board set replycnt=(select count(rno) from TBL_REPLY 
+where tbl_reply.bno = tbl_board.bno);
+
+alter table tbl_board
 add constraint board_pk primary key(bno);
 
 create sequence tbl_board_seq;

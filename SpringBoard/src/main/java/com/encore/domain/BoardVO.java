@@ -9,7 +9,17 @@ public class BoardVO {
 	private String writer;
 	private Date regdate;
 	private Date updatedate;
-	//날짜 포멧을 VO에서 하면 된다.
+
+	private int replyCnt;
+
+	public int getReplyCnt() {
+		return replyCnt;
+	}
+
+	public void setReplyCnt(int replyCnt) {
+		this.replyCnt = replyCnt;
+	}
+
 	public int getBno() {
 		return bno;
 	}
@@ -58,10 +68,24 @@ public class BoardVO {
 		this.updatedate = updatedate;
 	}
 
+	public BoardVO(int bno, String title, String content, String writer, Date regdate, Date updatedate, int replyCnt) {
+		super();
+		this.bno = bno;
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+		this.regdate = regdate;
+		this.updatedate = updatedate;
+		this.replyCnt = replyCnt;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regdate="
-				+ regdate + ", updatedate=" + updatedate + "]";
+				+ regdate + ", updatedate=" + updatedate + ", replyCnt=" + replyCnt + "]";
 	}
 
+	public BoardVO() {
+		// TODO Auto-generated constructor stub
+	}
 }
