@@ -16,7 +16,7 @@ import com.encore.service.BoardService;
 @Controller
 @RequestMapping("/board/*") // 공통매핑 정의
 public class BoardController {
-
+	
 	@Autowired
 	BoardService service;
 
