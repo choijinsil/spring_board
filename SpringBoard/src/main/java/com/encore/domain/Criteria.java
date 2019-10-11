@@ -5,11 +5,11 @@ public class Criteria {
 	private int amount;// 브라우저 한 화면에 보여질 레코드(게시물)수
 
 	private String type;
-	private String keyword;	
-	
+	private String keyword;
+
 	public Criteria() {
-		pageNum=1;
-		amount=10;
+		pageNum = 1;
+		amount = 10;
 	}
 
 	public Criteria(int pageNum, int amount) {
@@ -18,8 +18,6 @@ public class Criteria {
 		this.amount = amount;
 	}
 
-	
-	
 	public String getType() {
 		return type;
 	}
@@ -56,7 +54,5 @@ public class Criteria {
 	public String toString() {
 		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", type=" + type + ", keyword=" + keyword + "]";
 	}
-	
-	
 
 }

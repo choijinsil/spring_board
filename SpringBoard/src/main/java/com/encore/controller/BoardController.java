@@ -14,18 +14,17 @@ import com.encore.domain.PageDTO;
 import com.encore.service.BoardService;
 
 @Controller
-@RequestMapping("/board/*") // 공통매핑 정의
+@RequestMapping("/board/*")// 공통매핑 정의
 public class BoardController {
-	
+
 	@Autowired
 	BoardService service;
 
 	// 게시물 목록보기
 	@GetMapping("/list")
 	public String list(Criteria cri, Model m) {
-//		m.addAttribute("list", service.getList(cri.getPageNum()));//getList(3페이지)
-		m.addAttribute("list", service.getList(cri));//getList(3페이지)
-
+		
+		m.addAttribute("list", service.getList(cri));// getList(3페이지)
 		int total = service.getTotal(cri); // DB의 total값(검색어를 만족하는 레코드)
 
 		m.addAttribute("pageMaker", new PageDTO(cri, total));
@@ -67,9 +66,9 @@ public class BoardController {
 	public String postModify(BoardVO board, RedirectAttributes attr, Criteria cri) {
 		if (service.modify(board)) {// 수정요청
 			attr.addFlashAttribute("result", "success");
-			attr.addFlashAttribute("cir",cri);
+			attr.addFlashAttribute("cir", cri);
 		}
-		return "redirect:/board/list?pageNum="+cri.getPageNum();
+		return "redirect:/board/list?pageNum=" + cri.getPageNum();
 	}
 
 	// 게시물 삭제
